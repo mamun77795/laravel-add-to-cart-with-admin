@@ -4,7 +4,7 @@
             @foreach($products as $product)
             <div class="col-sm-6 col-md-4">
                 <div class="img_thumbnail productlist">
-                    <img src="{{asset('img')}}/{{$product->photo}}" class="img-fluid" alt="Image">
+                    <img src="{{asset('img')}}/{{$product->photo}}" class="img-fluid" style="height:250px;" alt="Image">
                     <div class="caption">
                         <h4>{{$product->product_name}}</h4>
                         <p>{{$product->product_description}}</p>

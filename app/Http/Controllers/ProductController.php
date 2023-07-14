@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductCollection;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -61,15 +62,31 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $request->validated();
+        $product = new Product();
+        $product->product_name = $request->product_name;
+        $product->product_description = $request->product_description;
+        $product->price = $request->price;
+        if($request->photo){
+            $img_name = time()."pic.".$request->photo->extension();
+            $request->photo->move(public_path('img'), $img_name);
+            $product->photo=$img_name;
+        }
+        $product->save();
+        return redirect('/admin');
+    }
+
+    public function index_view(){
+        $products = new ProductCollection(Product::all());
+        return view('index_view', compact('products'));
     }
 
     /**
@@ -99,8 +116,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        session()->flash('success','Product deleted successfully');
+        return redirect('admin');
     }
 }
