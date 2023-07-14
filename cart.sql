@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2023 at 03:34 PM
+-- Generation Time: Jul 14, 2023 at 07:21 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -102,7 +102,7 @@ CREATE TABLE `products` (
   `product_name` varchar(255) NOT NULL,
   `product_description` text NOT NULL,
   `photo` varchar(255) NOT NULL,
-  `price` decimal(6,2) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -112,7 +112,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_name`, `product_description`, `photo`, `price`, `created_at`, `updated_at`) VALUES
-(1, 'Laptop', 'This very good laptop', '001.png', 800.00, '2023-07-13 22:32:49', '2023-07-13 22:32:49');
+(1, 'Laptop', 'This very good laptop', '001.png', 800.00, '2023-07-13 22:32:49', '2023-07-13 22:32:49'),
+(6, 'New Laptop', 'A laptop can be turned int', '1689354908pic.png', 30000.00, '2023-07-14 11:15:08', '2023-07-14 11:15:08'),
+(7, 'New Laptop', 'A laptop can be turned int 111', '1689354978pic.jpg', 50000.00, '2023-07-14 11:16:18', '2023-07-14 11:16:18');
 
 -- --------------------------------------------------------
 
@@ -201,7 +203,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
